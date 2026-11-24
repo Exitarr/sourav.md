@@ -1,0 +1,193 @@
+@import "tailwindcss";
+
+@plugin "daisyui" {
+  themes: false;
+  logs: false;
+  /* Words like "input" or "table" in the source would otherwise pull these in. */
+  exclude: input, tab, table, stack, list, label, select, menu, dropdown, footer, link, divider, textarea, timeline, filter;
+}
+
+/* Single matte theme. No depth, no noise, small radii. */
+@plugin "daisyui/theme" {
+  name: "sourav";
+  default: true;
+  prefersdark: true;
+  color-scheme: dark;
+
+  --color-base-100: #191919;
+  --color-base-200: #202020;
+  --color-base-300: #343434;
+  --color-base-content: #e5e1d8;
+
+  --color-primary: #d49a69;
+  --color-primary-content: #191919;
+  --color-secondary: #99958d;
+  --color-secondary-content: #191919;
+  --color-accent: #d49a69;
+  --color-accent-content: #191919;
+  --color-neutral: #202020;
+  --color-neutral-content: #e5e1d8;
+
+  --color-info: #99958d;
+  --color-info-content: #191919;
+  --color-success: #8eaa86;
+  --color-success-content: #191919;
+  --color-warning: #d49a69;
+  --color-warning-content: #191919;
+  --color-error: #c98a7c;
+  --color-error-content: #191919;
+
+  --radius-selector: 0.25rem;
+  --radius-field: 0.25rem;
+  --radius-box: 0.25rem;
+  --size-selector: 0.25rem;
+  --size-field: 0.25rem;
+  --border: 1px;
+  --depth: 0;
+  --noise: 0;
+}
+
+@font-face {
+  font-family: "Inter Variable";
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("/fonts/inter-latin.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "JetBrains Mono Variable";
+  font-style: normal;
+  font-weight: 100 800;
+  font-display: swap;
+  src: url("/fonts/jetbrains-mono-latin.woff2") format("woff2");
+}
+
+@theme {
+  --font-sans: "Inter Variable", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-mono: "JetBrains Mono Variable", ui-monospace, "Cascadia Mono", "SFMono-Regular", Consolas, monospace;
+
+  --color-muted: #99958d;
+  --color-faint: #85817a; /* 4.5:1 on #191919 — WCAG AA for small text */
+  --color-line: #343434;
+  --color-surface: #202020;
+  --color-ink: #e5e1d8;
+  --color-amber: #d49a69;
+  --color-moss: #8eaa86;
+}
+
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    @apply bg-base-100 text-base-content font-sans antialiased;
+    font-size: 15.5px;
+    line-height: 1.65;
+  }
+
+  ::selection {
+    background: rgb(212 154 105 / 0.28);
+    color: var(--color-ink);
+  }
+
+  :focus-visible {
+    outline: 1.5px solid var(--color-amber);
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
+
+  a {
+    text-underline-offset: 3px;
+  }
+}
+
+@layer components {
+  /* Inline text link: muted underline, amber on hover. */
+  .link-term {
+    @apply text-ink underline decoration-line decoration-1 transition-colors;
+  }
+  .link-term:hover {
+    @apply text-amber decoration-amber;
+  }
+
+  .cursor-block::after {
+    content: "";
+    display: inline-block;
+    width: 0.55em;
+    height: 1.05em;
+    margin-left: 0.15em;
+    vertical-align: -0.15em;
+    background: var(--color-amber);
+    animation: blink 1.1s steps(1) infinite;
+  }
+}
+
+/* Pixel logo: rays breathe, core pulses out of phase, whole mark floats. */
+.pixel-logo {
+  overflow: visible;
+}
+.pixel-logo__rays {
+  fill: var(--color-amber);
+  transform-box: view-box;
+  transform-origin: 50% 46%;
+  animation: rays 5s ease-in-out infinite;
+}
+.pixel-logo__body {
+  fill: #6f6a65;
+}
+.pixel-logo__core {
+  fill: #e8b987;
+  animation: core 5s ease-in-out infinite;
+}
+.pixel-logo__float {
+  animation: float 7s ease-in-out infinite;
+}
+
+@keyframes rays {
+  0%,
+  100% {
+    transform: scale(0.96);
+    opacity: 0.72;
+  }
+  50% {
+    transform: scale(1.03);
+    opacity: 1;
+  }
+}
+@keyframes core {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.55;
+  }
+}
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-2.5px);
+  }
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+}
