@@ -10,6 +10,8 @@ const Work = lazy(() => import("./pages/Work"));
 const Skill = lazy(() => import("./pages/Skill"));
 const Project = lazy(() => import("./pages/Project"));
 const ProjectDetail = lazy(() => import("./pages/ProjectDetail"));
+const Education = lazy(() => import("./pages/Education"));
+const Contact = lazy(() => import("./pages/Contact"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 
 const router = createBrowserRouter([
@@ -22,6 +24,8 @@ const router = createBrowserRouter([
       { path: "skill", element: <Skill /> },
       { path: "project", element: <Project /> },
       { path: "project/:slug", element: <ProjectDetail /> },
+      { path: "education", element: <Education /> },
+      { path: "contact", element: <Contact /> },
       { path: "*", element: <NotFound /> },
     ],
   },
