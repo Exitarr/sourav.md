@@ -1,4 +1,4 @@
-import { useEffect, useId, useRef, useState, type KeyboardEvent, type ReactNode } from "react";
+import { useCallback, useEffect, useId, useRef, useState, type KeyboardEvent, type ReactNode } from "react";
 import { resolveCommand, suggest } from "../commands";
 import { CommandList } from "./CommandList";
 import { PageOutput } from "./PageOutput";
@@ -45,16 +45,16 @@ export function Terminal() {
     return () => window.removeEventListener("keydown", onKey);
   }, []);
 
-  // Bring each new entry's first line into view; the page scrolls like terminal output.
+  // Bring the newest entry's first line into view; the page scrolls like terminal output.
+  // Page output loads lazily, so it calls this again once its content is in.
+  const scrollToLatest = useCallback(() => {
+    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    lastEntryRef.current?.scrollIntoView({ block: "start", behavior: reduce ? "auto" : "smooth" });
+  }, []);
   const lastId = log[log.length - 1]?.id;
   useEffect(() => {
-    if (lastId === undefined) return;
-    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    lastEntryRef.current?.scrollIntoView({
-      block: "start",
-      behavior: reduce ? "auto" : "smooth",
-    });
-  }, [lastId]);
+    if (lastId !== undefined) scrollToLatest();
+  }, [lastId, scrollToLatest]);
 
   function print(input: string, output: ReactNode, error = false) {
     setLog((l) => [...l, { id: nextId.current++, input, output, error }].slice(-SCROLLBACK));
@@ -79,7 +79,7 @@ export function Terminal() {
       window.open(cmd.href, "_blank", "noopener");
       print(text, "Opened resume in a new tab.");
     } else if (cmd.path) {
-      print(text, <PageOutput path={cmd.path} />);
+      print(text, <PageOutput path={cmd.path} onReady={scrollToLatest} />);
     }
   }
 
