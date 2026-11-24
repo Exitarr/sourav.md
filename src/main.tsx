@@ -1,18 +1,9 @@
-import { StrictMode, lazy } from "react";
+import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import { createBrowserRouter, Navigate, RouterProvider } from "react-router";
 import { Shell } from "./components/Shell";
+import { Contact, Education, Home, NotFound, Project, ProjectDetail, Skill, Work } from "./pages/lazy";
 import "./styles.css";
-
-// Each page is its own chunk; the shell renders immediately.
-const Home = lazy(() => import("./pages/Home"));
-const Work = lazy(() => import("./pages/Work"));
-const Skill = lazy(() => import("./pages/Skill"));
-const Project = lazy(() => import("./pages/Project"));
-const ProjectDetail = lazy(() => import("./pages/ProjectDetail"));
-const Education = lazy(() => import("./pages/Education"));
-const Contact = lazy(() => import("./pages/Contact"));
-const NotFound = lazy(() => import("./pages/NotFound"));
 
 const router = createBrowserRouter([
   {

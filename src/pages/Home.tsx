@@ -2,19 +2,11 @@ import { PixelLogo } from "../components/PixelLogo";
 import { Section } from "../components/Section";
 import { CommandList } from "../components/CommandList";
 import { useDocumentMeta } from "../components/useDocumentMeta";
-import { education, experience, profile } from "../content/resume";
+import { profile } from "../content/resume";
+import Info from "./Info";
 
 export default function Home() {
   useDocumentMeta(null);
-  const current = experience[0];
-  const degree = education[0];
-
-  const facts: [string, string][] = [
-    ["role", `${current.title}, ${current.team}`],
-    ["company", `${current.company} · since ${current.start}`],
-    ["based in", profile.location],
-    ["education", `B.Tech CSE, NIT Rourkela (${degree.end})`],
-  ];
 
   return (
     <div className="space-y-14 sm:space-y-16">
@@ -33,40 +25,15 @@ export default function Home() {
         </div>
       </header>
 
-      <Section command="/info" id="info">
-        <div className="max-w-[68ch] space-y-4">
-          <p className="text-ink">{profile.summary}</p>
-          <p className="text-muted">{profile.summaryExtra}</p>
-        </div>
-
-        <dl className="mt-6 grid grid-cols-[minmax(6.5rem,auto)_1fr] gap-x-6 gap-y-1.5 font-mono text-[0.85rem]">
-          {facts.map(([k, v]) => (
-            <div key={k} className="contents">
-              <dt className="text-faint">{k}</dt>
-              <dd className="text-ink">{v}</dd>
-            </div>
-          ))}
-        </dl>
-
-        <h3 className="mt-6 font-mono text-[0.85rem] text-faint">strengths</h3>
-        <ul className="mt-1.5 space-y-1 text-[0.95rem]">
-          {profile.strengths.map((s) => (
-            <li key={s} className="flex gap-3">
-              <span aria-hidden="true" className="select-none font-mono text-amber">
-                ·
-              </span>
-              <span className="text-muted">{s}</span>
-            </li>
-          ))}
-        </ul>
-      </Section>
+      <Info />
 
       <Section command="/help" id="help">
         <p className="mb-4 text-muted">
-          Type a command in the terminal below to open that page. Press <kbd className="kbd kbd-sm">/</kbd> anywhere to
-          start.
+          Click a command to open its page, or type it in the terminal below to print it right there. Press{" "}
+          <kbd className="kbd kbd-sm">/</kbd> anywhere to start, and <span className="font-mono text-ink">/clear</span>{" "}
+          to wipe the terminal.
         </p>
-        <CommandList hide={["/help"]} />
+        <CommandList linked hide={["/info", "/help", "/clear"]} />
       </Section>
     </div>
   );

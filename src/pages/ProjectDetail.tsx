@@ -4,8 +4,9 @@ import { ProjectBody } from "../components/ProjectBody";
 import { useDocumentMeta } from "../components/useDocumentMeta";
 import { projectGroups, projects } from "../content/resume";
 
-export default function ProjectDetail() {
-  const { slug = "" } = useParams();
+export default function ProjectDetail({ slug: slugProp }: { slug?: string }) {
+  const params = useParams();
+  const slug = slugProp ?? params.slug ?? "";
   const index = projects.findIndex((p) => p.slug === slug);
   const project = projects[index];
 

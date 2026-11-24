@@ -1,5 +1,6 @@
 import type { ReactNode } from "react";
 import { Prompt } from "./Prompt";
+import { useInline } from "./inline";
 
 type Props = {
   command: ReactNode;
@@ -10,6 +11,8 @@ type Props = {
 
 /** A `> /command` heading followed by its output, set off with a ⎿ output gutter. */
 export function Section({ command, id, children, as = "h2" }: Props) {
+  // In the terminal the typed command and ⎿ gutter are already drawn, so show only the output.
+  if (useInline()) return <div>{children}</div>;
   return (
     <section aria-labelledby={id}>
       <Prompt as={as} id={id}>
