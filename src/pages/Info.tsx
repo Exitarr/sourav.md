@@ -1,20 +1,17 @@
 import { Section } from "../components/Section";
 import { ArrowUpRight } from "lucide-react";
-import { Link } from "react-router";
 import { education, experience, handsOn, links, profile } from "../content/resume";
 
 /** The /info section: summary, quick facts and strengths. Shown on the home page and in the terminal. */
 export default function Info() {
   const current = experience[0];
-  const intern = experience[experience.length - 1];
   const degree = education[0];
 
   const facts: [string, string][] = [
     ["role", `${current.title}, ${current.team}`],
     ["company", `${current.company} · since ${current.start}`],
-    ["path", `intern ${intern.start} → full-time ${current.start}`],
     ["based in", profile.location],
-    ["education", `B.Tech CSE, NIT Rourkela · ${degree.end} · CGPA ${degree.cgpa}/${degree.cgpaScale}`],
+    ["education", `B.Tech CSE, NIT Rourkela (${degree.end})`],
   ];
 
   return (
@@ -33,25 +30,7 @@ export default function Info() {
         ))}
       </dl>
 
-      <h3 className="mt-8 font-mono text-[0.85rem] text-faint">at work · highlights</h3>
-      <ul className="mt-1.5 space-y-1.5 text-[0.95rem]">
-        {profile.highlights.map((h) => (
-          <li key={h.slug} className="flex gap-3">
-            <span aria-hidden="true" className="select-none font-mono text-amber">
-              ›
-            </span>
-            <span className="text-ink/90">
-              {h.text}{" "}
-              <Link to={`/project/${h.slug}`} className="link-term whitespace-nowrap font-mono text-[0.8rem] text-muted">
-                details
-                <span className="sr-only"> about this project</span>
-              </Link>
-            </span>
-          </li>
-        ))}
-      </ul>
-
-      <h3 className="mt-8 font-mono text-[0.85rem] text-faint">strengths</h3>
+      <h3 className="mt-6 font-mono text-[0.85rem] text-faint">strengths</h3>
       <ul className="mt-1.5 space-y-1 text-[0.95rem]">
         {profile.strengths.map((s) => (
           <li key={s} className="flex gap-3">
