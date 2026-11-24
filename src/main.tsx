@@ -6,6 +6,7 @@ import "./styles.css";
 
 // Each page is its own chunk; the shell renders immediately.
 const Home = lazy(() => import("./pages/Home"));
+const Work = lazy(() => import("./pages/Work"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 
 const router = createBrowserRouter([
@@ -14,6 +15,7 @@ const router = createBrowserRouter([
     children: [
       { index: true, element: <Home /> },
       { path: "info", element: <Navigate to="/" replace /> },
+      { path: "work", element: <Work /> },
       { path: "*", element: <NotFound /> },
     ],
   },
