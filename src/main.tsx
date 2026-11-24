@@ -8,6 +8,8 @@ import "./styles.css";
 const Home = lazy(() => import("./pages/Home"));
 const Work = lazy(() => import("./pages/Work"));
 const Skill = lazy(() => import("./pages/Skill"));
+const Project = lazy(() => import("./pages/Project"));
+const ProjectDetail = lazy(() => import("./pages/ProjectDetail"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 
 const router = createBrowserRouter([
@@ -18,6 +20,8 @@ const router = createBrowserRouter([
       { path: "info", element: <Navigate to="/" replace /> },
       { path: "work", element: <Work /> },
       { path: "skill", element: <Skill /> },
+      { path: "project", element: <Project /> },
+      { path: "project/:slug", element: <ProjectDetail /> },
       { path: "*", element: <NotFound /> },
     ],
   },
