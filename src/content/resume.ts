@@ -13,9 +13,24 @@ export const profile = {
   location: "India",
   headline: "Backend Engineer · Data Security Engineering @ American Express",
   summary:
-    "I'm a backend engineer on the Data Security Engineering team at American Express. I build REST APIs and backend services in Java, Spring Boot and Python, and I own the framework the team uses to benchmark distributed systems for performance.",
+    "I'm a backend engineer on the Data Security Engineering team at American Express. I build REST APIs and backend services in Java, Spring Boot and Python, and I own the framework the team uses to benchmark cryptographic workloads at scale.",
   summaryExtra:
-    "My work sits where performance, reliability and security meet: tuning services, wiring up observability with OpenTelemetry, InfluxDB and Grafana, and supporting enterprise data security and cryptographic platforms. I also work with Generative AI — LLMs, RAG, LangChain, LangGraph, MCP and agentic workflows.",
+    "I joined as an intern in January 2025 and went full-time that September. My work sits where performance, reliability and security meet: tuning services, wiring up observability with OpenTelemetry, InfluxDB and Grafana, and supporting enterprise data security and cryptographic platforms. I also build with Generative AI — LLMs, RAG, LangChain, LangGraph, MCP and agentic workflows.",
+  /** Concrete outcomes from work, each linking to its project page. From the resume. */
+  highlights: [
+    {
+      text: "Cut the benchmarking framework's build time by 62.5% (2 min → 45 s) by moving dependency installs from pip to uv",
+      slug: "distributed-benchmarking-framework",
+    },
+    {
+      text: "Built a RAG assistant in Slack that took over documentation questions previously answered by about 5 developers",
+      slug: "slack-rag-assistant",
+    },
+    {
+      text: "Shipped a Spring Boot + Couchbase API that shows client apps which encryption keys they use",
+      slug: "key-usage-analytics-api",
+    },
+  ],
   strengths: [
     "Backend services & REST APIs — Java, Spring Boot, Python, FastAPI, Flask",
     "Distributed performance benchmarking & optimization",
