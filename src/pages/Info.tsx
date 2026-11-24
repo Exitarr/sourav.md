@@ -1,6 +1,5 @@
 import { Section } from "../components/Section";
-import { ArrowUpRight } from "lucide-react";
-import { education, experience, handsOn, links, profile } from "../content/resume";
+import { education, experience, profile } from "../content/resume";
 
 /** The /info section: summary, quick facts and strengths. Shown on the home page and in the terminal. */
 export default function Info() {
@@ -38,36 +37,6 @@ export default function Info() {
               ·
             </span>
             <span className="text-muted">{s}</span>
-          </li>
-        ))}
-      </ul>
-
-      <h3 className="mt-8 font-mono text-[0.85rem] text-faint">hands-on · personal projects</h3>
-      <p className="mt-1 max-w-[68ch] text-[0.95rem] text-muted">
-        Outside work I learn by building. These are my own projects from{" "}
-        <a href={links.github} target="_blank" rel="noopener noreferrer" className="link-term font-mono text-[0.85rem]">
-          github.com/{links.githubHandle}
-          <span className="sr-only"> (opens in a new tab)</span>
-        </a>{" "}
-        — personal, hands-on experience, separate from my professional work at {profile.company}.
-      </p>
-      <ul className="mt-4 space-y-3">
-        {handsOn.map((p) => (
-          <li key={p.name} className="grid gap-x-6 gap-y-0.5 sm:grid-cols-[12.5rem_1fr]">
-            <a
-              href={p.repo}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="link-term inline-flex items-center gap-1 self-start justify-self-start font-mono text-[0.85rem]"
-            >
-              {p.name}
-              <ArrowUpRight aria-hidden="true" size={13} className="shrink-0 text-faint" />
-              <span className="sr-only"> on GitHub (opens in a new tab)</span>
-            </a>
-            <div>
-              <p className="text-[0.95rem] text-muted">{p.what}</p>
-              <p className="font-mono text-[0.75rem] text-faint">{p.stack.join(" · ")}</p>
-            </div>
           </li>
         ))}
       </ul>

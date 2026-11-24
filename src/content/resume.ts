@@ -1,7 +1,6 @@
 /**
  * Single source of truth for all site content.
- * Derived from SouravDas_Resume.pdf; personal projects and `handsOn` from the repos on github.com/Exitarr
- * (READMEs and code) — do not add facts that aren't in a source.
+ * Derived from SouravDas_Resume.pdf (personal projects: from their READMEs) — do not add facts that aren't in a source.
  */
 
 export const profile = {
@@ -13,9 +12,9 @@ export const profile = {
   location: "India",
   headline: "Backend Engineer · Data Security Engineering @ American Express",
   summary:
-    "I'm a backend engineer on the Data Security Engineering team at American Express. I build REST APIs and backend services in Java, Spring Boot and Python, and I own the framework the team uses to benchmark distributed systems for performance.",
+    "Software Engineer at American Express specializing in backend engineering, distributed systems, performance optimization and enterprise data security. I build REST APIs and backend services in Java, Spring Boot, Python and FastAPI, own a distributed performance benchmarking framework, and work with database systems, messaging technologies and cloud-native infrastructure.",
   summaryExtra:
-    "My work sits where performance, reliability and security meet: tuning services, wiring up observability with OpenTelemetry, InfluxDB and Grafana, and supporting enterprise data security and cryptographic platforms. I also work with Generative AI — LLMs, RAG, LangChain, LangGraph, MCP and agentic workflows.",
+    "Experienced in owning backend frameworks, improving build efficiency and building automation. Familiar with Generative AI — LLMs, RAG, LangChain, LangGraph, MCP and agentic workflows.",
   strengths: [
     "Backend services & REST APIs — Java, Spring Boot, Python, FastAPI, Flask",
     "Distributed performance benchmarking & optimization",
@@ -25,43 +24,6 @@ export const profile = {
     "Cloud-native delivery — Docker, Kubernetes, Helm, CI/CD",
   ],
 } as const;
-
-/**
- * Hands-on personal projects from GitHub. These are things I built myself, outside my job —
- * not American Express work — and are labelled that way wherever they appear.
- */
-export const handsOn: { name: string; what: string; stack: string[]; repo: string }[] = [
-  {
-    name: "aimforge",
-    what: "3D aim trainer that runs entirely in the browser",
-    stack: ["Three.js", "WebGL", "Web Audio API"],
-    repo: "https://github.com/Exitarr/aimforge",
-  },
-  {
-    name: "shortly",
-    what: "URL shortener with JWT sign-in and per-link click history",
-    stack: ["Node.js", "Express", "MongoDB", "React"],
-    repo: "https://github.com/Exitarr/shortly",
-  },
-  {
-    name: "smart-attendance",
-    what: "IoT attendance counter: Arduino IR/PIR sensors report over CoAP to a Node.js server and live dashboard",
-    stack: ["Arduino", "CoAP", "Node.js", "Express"],
-    repo: "https://github.com/Exitarr/COAP-based-smart-attendance-System",
-  },
-  {
-    name: "component-catalogue",
-    what: "Software component catalogue with a GraphQL API and auth",
-    stack: ["Apollo GraphQL", "Prisma", "JWT", "React"],
-    repo: "https://github.com/Exitarr/software_component_catalogue-swe-project",
-  },
-  {
-    name: "auto-detect",
-    what: "Car detection web app, containerised with Docker",
-    stack: ["Flask", "OpenCV", "Docker"],
-    repo: "https://github.com/Exitarr/auto-detect",
-  },
-];
 
 export const links = {
   email: "souravdas212002@gmail.com",
